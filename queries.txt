@@ -1,0 +1,40 @@
+use dbdesignguvi;
+create table task(
+task_id int primary key,
+task_name varchar(25));
+
+create table roadmap(
+roadmap_id int primary key,
+roadmap_name varchar(25));
+
+create table  attendance (
+attendance_id int primary key,
+attendance_percentage int);
+
+create table student(
+student_id int primary key,
+student_name varchar(25),
+codekata_score int,
+webkata_score int,
+task_id int,
+attendance_id int,
+foreign key (task_id) references task(task_id),
+foreign key (attendance_id) references attendance(attendance_id));
+
+create table guvi(
+guvi_id int primary key,
+student_id int,
+task_id int,
+attendance_id int,
+roadmap_id int,
+foreign key (roadmap_id) references roadmap(roadmap_id),
+foreign key (student_id) references student(student_id),
+foreign key (task_id) references task(task_id),
+foreign key (attendance_id) references attendance(attendance_id));
+
+describe task;
+describe roadmap;
+describe attendance;
+describe student;
+describe guvi;
+
